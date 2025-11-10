@@ -1,14 +1,15 @@
-# Use an official OpenJDK image
+# Use a slim JDK base image
 FROM openjdk:17-jdk-slim
 
-# Set the working directory
+# Set working directory
 WORKDIR /app
 
-# Copy Maven build files
-COPY target/*.jar app.jar
+# Copy the build jar into the container
+COPY target/support-system-0.0.1-SNAPSHOT.jar app.jar
 
 # Expose the port your app runs on
 EXPOSE 9090
 
-# Run the app
+# Run the application
 ENTRYPOINT ["java","-jar","app.jar"]
+
